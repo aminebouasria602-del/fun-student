@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paws Haven — Student Admin</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#F3F5F9;--sf:#fff;--ink:#1B2336;--mu:#5B6680;--bd:#E3E7EF;--nv:#16213A;--nv2:#26345A;--co:#FF6B4A;--in:#F8F9FC;--dg:#B3242F;--okb:#D5F3E8;--okt:#0B5B40;--wb:#FFE3B8;--wt:#7A4300;--ib:#DCE6FF;--it:#1D3A8A;--ln:#CBD2E1;--soft:#A9B4D0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1220;--sf:#162039;--ink:#EEF1F8;--mu:#A3AECB;--bd:#2A3857;--nv:#1B2A4F;--in:#0F172C;--okb:#12382C;--okt:#9BE8C8;--wb:#4A3510;--wt:#FFD28A;--ib:#1E2E5C;--it:#B9CCFF;--ln:#3A4A6E}}
+:root[data-theme="dark"]{--bg:#0C1220;--sf:#162039;--ink:#EEF1F8;--mu:#A3AECB;--bd:#2A3857;--nv:#1B2A4F;--in:#0F172C;--okb:#12382C;--okt:#9BE8C8;--wb:#4A3510;--wt:#FFD28A;--ib:#1E2E5C;--it:#B9CCFF;--ln:#3A4A6E}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 'DM Sans',system-ui,sans-serif;min-height:100vh}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--co);outline-offset:2px}
+.shell{display:flex;min-height:100vh}
+.sb{width:230px;background:var(--nv);color:#fff;padding:20px 14px;display:flex;flex-direction:column;flex:none}
+.lg{display:flex;gap:10px;align-items:center;margin-bottom:26px}
+.lgi{width:36px;height:36px;border-radius:10px;background:var(--co);display:flex;align-items:center;justify-content:center;flex:none}
+.sm{font-size:12px;color:var(--soft)}
+.nv{padding:11px 12px;border-radius:10px;background:var(--nv2);font-weight:600;margin-top:8px}
+.us{margin-top:auto;border-top:1px solid #2A3857;padding-top:14px;display:flex;gap:10px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;background:#FFD9CF;color:#9A2F16;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.lo{background:none;border:0;color:var(--soft);padding:0;text-decoration:underline;cursor:pointer;font-size:12px}
+.mn{flex:1;min-width:0}
+.tb{padding:16px 32px;color:var(--mu);font-size:13px;background:var(--sf);border-bottom:1px solid var(--bd)}
+.c{padding:28px 32px;display:flex;flex-direction:column;gap:20px;max-width:1080px}
+.hd{background:var(--nv);color:#fff;border-radius:18px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.hd h1{margin:0 0 4px;font-size:30px;line-height:1.1}.hd p{margin:0;color:var(--soft)}
+.bt{background:var(--co);color:#16213A;border:0;border-radius:10px;padding:11px 18px;font-weight:700;cursor:pointer;min-height:44px}
+.vb{border:1px solid var(--ln);background:var(--sf);border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer;min-height:44px}
+.dg{background:var(--dg);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:700;cursor:pointer;min-height:44px}
+.cd{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:20px}
+.mu{color:var(--mu);font-size:13px}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.st b{font-size:32px;display:block;line-height:1.2}
+.p{padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;display:inline-block}
+.Enrolled{background:var(--okb);color:var(--okt)}.Waitlisted{background:var(--wb);color:var(--wt)}.Inactive{background:var(--ib);color:var(--it)}
+.tw{overflow-x:auto}.tbl{min-width:640px}
+.r{display:grid;grid-template-columns:2fr 1.1fr 1.5fr 1fr 96px;gap:8px;align-items:center;padding:12px 20px;border-top:1px solid var(--bd)}
+.r.h{border:0;font-size:12px;font-weight:700;color:var(--mu)}
+.nm{display:flex;gap:10px;align-items:center;font-weight:700}
+.fb{display:flex;gap:8px;flex-wrap:wrap}
+.in{border:1px solid var(--ln);border-radius:10px;padding:10px 12px;background:var(--in);min-height:44px;width:100%}
+.fl{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:13px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+.kv{display:grid;grid-template-columns:140px 1fr;padding:10px 0;border-top:1px solid var(--bd);font-size:13px}
+.er{color:var(--dg);font-size:13px;font-weight:600}
+.ov{position:fixed;inset:0;background:rgba(10,16,32,.7);display:flex;align-items:center;justify-content:center;padding:16px;z-index:5}
+.md{background:var(--sf);border-radius:18px;padding:26px;width:min(420px,100%)}
+.lw{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--nv)}
+.lc{background:var(--sf);border-radius:20px;padding:30px;width:min(400px,100%);display:flex;flex-direction:column;gap:14px}
+.ft{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-weight:600;z-index:9}
+@media (max-width:820px){.shell{flex-direction:column}.sb{width:auto;flex-direction:row;align-items:center;padding:12px 16px;gap:12px}.lg{margin:0}.nv,.sb .sm.up{display:none}.us{margin:0 0 0 auto;border:0;padding:0}.c{padding:20px 16px}.tb{padding:12px 16px}.g2,.st{grid-template-columns:1fr}.kv{grid-template-columns:110px 1fr}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+var TK='ph_token',API='/api/v1';
+var S={view:'login',token:null,roles:[],email:'',list:[],sel:null,full:null,mode:'add',q:'',del:false,err:'',lerr:'',busy:false,_k:null};
+try{S.token=sessionStorage.getItem(TK);S.roles=JSON.parse(sessionStorage.getItem(TK+'r')||'[]');S.email=sessionStorage.getItem(TK+'e')||''}catch(e){}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function sid(n){return 'ST-'+String(n).padStart(3,'0')}
+function ini(x){return esc(((x.name||'?')[0]+((x.surname||'')[0]||'')).toUpperCase())}
+function canEdit(){return S.roles.indexOf('ROLE_ADMIN')>-1}
+function toast(m){var t=document.getElementById('toast');t.innerHTML='<div class="ft">'+esc(m)+'</div>';setTimeout(function(){t.innerHTML=''},2600)}
+function api(path,o){o=o||{};var h={'Content-Type':'application/json'};if(S.token)h.Authorization='Bearer '+S.token;
+return fetch(API+path,{method:o.m||'GET',headers:h,body:o.b?JSON.stringify(o.b):undefined}).then(function(r){
+if(r.status===401&&path.indexOf('/auth')<0){out('Your session expired. Log in again.');throw new Error('auth')}
+return r.text().then(function(t){var d=null;try{d=t?JSON.parse(t):null}catch(e){}
+if(!r.ok){throw new Error((d&&(d.message||d.error))||(r.status===403?'You don’t have permission to do this.':'Something went wrong ('+r.status+').'))}return d})})}
+function out(msg){S.token=null;S.roles=[];try{sessionStorage.removeItem(TK)}catch(e){}S.lerr=msg||'';S.view='login';S.del=false;render()}
+var PAW='<svg width="20" height="20" viewBox="0 0 24 24" fill="#16213A" aria-hidden="true"><circle cx="6" cy="11" r="2.2"/><circle cx="10" cy="6.5" r="2.2"/><circle cx="15" cy="6.5" r="2.2"/><circle cx="19" cy="11" r="2.2"/><path d="M12.5 12c-3 0-6 3.5-6 6 0 2 2 2.5 3.5 2 1-.4 1.6-.6 2.5-.6s1.5.2 2.5.6c1.5.5 3.5 0 3.5-2 0-2.5-3-6-6-6z"/></svg>';
+function shell(crumb,body){return '<div class="shell"><aside class="sb"><div class="lg"><span class="lgi">'+PAW+'</span><div><b>Paws Haven</b><div class="sm">Animal shelter</div></div></div><div class="sm up">WORKSPACE</div><div class="nv">Students</div><div class="us"><span class="av">'+esc((S.email[0]||'?').toUpperCase())+'</span><div style="min-width:0"><b style="word-break:break-all">'+esc(S.email)+'</b><div><button class="lo" data-a="logout">Log out</button></div></div></div></aside><main class="mn"><div class="tb">'+crumb+'</div><div class="c">'+body+'</div></main></div>'}
+function vLogin(){return '<div class="lw"><form class="lc" id="lf" novalidate><div class="lgi">'+PAW+'</div><div><h1 style="margin:0;font-size:26px">Log in to Paws Haven</h1><div class="mu">Student admin for staff and teachers.</div></div><label class="fl">Email<input class="in" name="email" type="email" autocomplete="username"></label><label class="fl">Password<input class="in" name="pw" type="password" autocomplete="current-password"></label>'+(S.lerr?'<div class="er" role="alert">'+esc(S.lerr)+'</div>':'')+'<button class="bt" type="submit"'+(S.busy?' disabled':'')+'>'+(S.busy?'Logging in…':'Log in')+'</button><div class="cd" style="padding:12px;font-size:13px">Test accounts from the project:<br><b>admin@example.com</b> / <b>admin</b> (can add, edit, delete)<br><b>teacher@example.com</b> / <b>teacher</b> (view only)</div></form></div>'}
+function vList(){var q=S.q.toLowerCase(),rows=S.list.filter(function(x){return !q||(x.name+' '+x.surname).toLowerCase().indexOf(q)>-1});
+var body='<div class="hd"><div><h1>Students</h1><p>Find and manage student records.</p></div>'+(canEdit()?'<button class="bt" data-a="add">+ Add student</button>':'')+'</div><div class="st"><div class="cd"><span class="mu">Total students</span><b>'+S.list.length+'</b></div><div class="cd"><span class="mu">Signed in as</span><b style="font-size:18px;padding-top:8px;word-break:break-all">'+esc(S.email)+'</b></div><div class="cd"><span class="mu">Your access</span><b style="font-size:18px;padding-top:8px">'+(canEdit()?'Add, edit, delete':'View only')+'</b></div></div>'
++'<div class="cd" style="padding:0"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px;gap:12px;flex-wrap:wrap"><div><b>Student directory</b><div class="mu">'+rows.length+' record'+(rows.length===1?'':'s')+'</div></div><input class="in" id="q" style="width:220px" placeholder="Search students" aria-label="Search students" value="'+esc(S.q)+'"></div><div class="tw"><div class="tbl"><div class="r h" style="grid-template-columns:2fr 1fr 96px"><span>STUDENT</span><span>ID</span><span></span></div>'
++(S.busy&&!S.list.length?'<div class="r mu" style="display:block">Loading students…</div>':rows.length?rows.map(function(x){return '<div class="r" style="grid-template-columns:2fr 1fr 96px"><span class="nm"><span class="av">'+ini(x)+'</span>'+esc(x.name)+' '+esc(x.surname)+'</span><span>'+sid(x.id)+'</span><button class="vb" data-a="view" data-id="'+x.id+'">View →</button></div>'}).join(''):'<div class="r mu" style="display:block">No students found.</div>')
++'</div></div><div class="mu" style="padding:14px 20px;border-top:1px solid var(--bd)">Showing '+rows.length+' of '+S.list.length+' students</div></div>';
+return shell('Workspace / Students',body)}
+function vDetail(){var x=S.full;if(!x)return shell('Workspace / Students','<div class="mu">Loading…</div>');
+var body='<div><button class="vb" data-a="back">← Students</button></div><div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap"><div><h1 style="margin:0;font-size:34px;line-height:1.1">'+esc(x.name)+' '+esc(x.surname)+'</h1><div class="mu">'+sid(x.id)+'</div></div>'+(canEdit()?'<button class="bt" data-a="edit">Edit student</button>':'')+'</div><div class="g2" style="margin:0"><div class="cd"><b>Student information</b><div class="kv" style="margin-top:10px"><span class="mu">First name</span><b>'+esc(x.name)+'</b></div><div class="kv"><span class="mu">Surname</span><b>'+esc(x.surname)+'</b></div></div><div class="cd"><b>Contact</b><div class="kv" style="margin-top:10px"><span class="mu">Phone</span><b>'+esc(x.phoneNumber||'—')+'</b></div><div class="kv"><span class="mu">Email</span><b style="word-break:break-all">'+esc(x.email||'—')+'</b></div></div></div>'
++(canEdit()?'<div class="cd" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b>Record actions</b><div class="mu">Permanently remove this student record.</div></div><button class="dg" data-a="del">Delete student</button></div>':'')
++(S.err?'<div class="er" role="alert">'+esc(S.err)+'</div>':'')
++(S.del?'<div class="ov"><div class="md" role="dialog" aria-modal="true" aria-labelledby="dt"><b id="dt" style="font-size:18px">Delete '+esc(x.name)+' '+esc(x.surname)+'?</b><p class="mu" style="margin:8px 0 20px">This permanently removes this student record. This action cannot be undone.</p><div style="display:flex;justify-content:flex-end;gap:10px"><button class="vb" id="cx" data-a="cancel">Cancel</button><button class="dg" data-a="confirm">Delete student</button></div></div></div>':'');
+return shell('Workspace / Students / '+esc(x.name)+' '+esc(x.surname),body)}
+function vForm(){var e=S.mode==='edit',x=e?S.full:{name:'',surname:'',phoneNumber:'',email:''};if(S._k)x=Object.assign({},x,S._k);
+var body='<div class="hd"><div><h1>'+(e?'Edit student':'Add student')+'</h1><p>'+(e?'Phone and email can be changed. Name stays the same.':'Create a student record.')+'</p></div></div><form id="sf" novalidate><div class="cd"><b>Student information</b><div class="g2"><label class="fl">First name *<input class="in" name="name" value="'+esc(x.name)+'"'+(e?' readonly':'')+' placeholder="e.g. Olivia"></label><label class="fl">Surname *<input class="in" name="surname" value="'+esc(x.surname)+'"'+(e?' readonly':'')+' placeholder="e.g. Lee"></label><label class="fl">Phone<input class="in" name="phone" type="tel" value="'+esc(x.phoneNumber)+'" placeholder="e.g. +7 900 000 00 00"></label><label class="fl">Email<input class="in" name="email" type="email" value="'+esc(x.email)+'" placeholder="name@example.com"></label></div></div><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px"><span class="mu">* Required fields</span><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+(S.err?'<span class="er" role="alert">'+esc(S.err)+'</span>':'')+'<button type="button" class="vb" data-a="'+(e?'cancelEdit':'back')+'">Cancel</button><button class="bt" type="submit"'+(S.busy?' disabled':'')+'>'+(e?'Save changes':'Add student')+'</button></div></div></form>';
+return shell('Workspace / Students'+(e&&x.name?' / '+esc(x.name):''),body)}
+function render(){document.getElementById('app').innerHTML=S.view==='login'?vLogin():S.view==='list'?vList():S.view==='detail'?vDetail():vForm();if(S.del){var c=document.getElementById('cx');if(c)c.focus()}}
+function go(v){S._k=null;S.view=v;S.err='';S.lerr='';S.del=false;render();window.scrollTo(0,0)}
+function loadList(){S.busy=true;render();return api('/student').then(function(d){S.list=(d&&d.response)||[];S.busy=false;render()}).catch(function(e){S.busy=false;if(e.message!=='auth'){S.err=e.message}render()})}
+function openStudent(id){S.sel=id;S.full=null;go('detail');api('/student/'+id).then(function(d){S.full=d;render()}).catch(function(e){if(e.message!=='auth'){toast(e.message);go('list')}})}
+document.addEventListener('click',function(ev){var b=ev.target.closest('[data-a]');if(!b)return;var a=b.dataset.a;
+if(a==='logout')return out('');
+if(a==='add'){S.mode='add';return go('form')}
+if(a==='view')return openStudent(+b.dataset.id);
+if(a==='back')return go('list');
+if(a==='edit'){S.mode='edit';return go('form')}
+if(a==='cancelEdit')return go('detail');
+if(a==='del'){S.del=true;return render()}
+if(a==='cancel'){S.del=false;return render()}
+if(a==='confirm'){var n=S.full.name+' '+S.full.surname;api('/student/'+S.sel,{m:'DELETE'}).then(function(){toast(n+' was deleted.');go('list');loadList()}).catch(function(e){if(e.message!=='auth'){S.del=false;S.err=e.message;render()}})}});
+document.addEventListener('submit',function(ev){ev.preventDefault();var f=ev.target;
+if(f.id==='lf'){S.busy=true;S.lerr='';render();api('/auth/login',{m:'POST',b:{email:f.email.value.trim(),password:f.pw.value}}).then(function(d){S.token=d.token;S.roles=d.roles||[];S.email=f.email.value.trim();try{sessionStorage.setItem(TK,S.token);sessionStorage.setItem(TK+'r',JSON.stringify(S.roles));sessionStorage.setItem(TK+'e',S.email)}catch(e){}S.busy=false;go('list');loadList()}).catch(function(){S.busy=false;S.lerr='Email or password is incorrect, or the server is not running.';render()});return}
+if(f.id==='sf'){var v={name:f.name.value.trim(),surname:f.surname.value.trim(),phoneNumber:f.phone.value.trim(),email:f.email.value.trim()};S._k=v;
+if(!v.name||!v.surname){S.err='Fill in first name and surname.';return render()}
+if(v.email&&v.email.indexOf('@')<1){S.err='Enter a valid email address.';return render()}
+S.busy=true;S.err='';var e=S.mode==='edit';
+var p=e?api('/student/'+S.sel,{m:'PUT',b:{phoneNumber:v.phoneNumber||null,email:v.email||null}}):api('/student/save',{m:'POST',b:{name:v.name,surname:v.surname,phone_number:v.phoneNumber||null,email:v.email||null}});
+p.then(function(){S.busy=false;toast(e?'Changes saved.':v.name+' was added.');if(e){openStudent(S.sel)}else{go('list')}loadList()}).catch(function(er){S.busy=false;if(er.message!=='auth'){S.err=er.message;render()}})}});
+document.addEventListener('input',function(ev){var t=ev.target;if(t.id==='q'){S.q=t.value;var p=t.selectionStart;render();var q=document.getElementById('q');q.focus();q.setSelectionRange(p,p)}});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&S.del){S.del=false;render()}});
+if(S.token){S.view='list';render();loadList()}else render();
+</script>
+</body>
+</html>
